@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>الكتاب — مكتبة آفاق</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="mkt-preview-banner">
+    نسخة معاينة تصميمية — بيانات وهمية، غير متصلة بالموقع الحقيقي
+</div>
+
+<header class="mkt-header">
+    <a href="index.html" class="mkt-logo">مكتبة آفاق</a>
+</header>
+
+<div class="mkt-book-page" id="mkt-book-page">
+    <!-- تُملأ عبر JavaScript حسب ?slug= في الرابط -->
+</div>
+
+<footer class="mkt-footer">© 2026 مكتبة آفاق</footer>
+
+<div id="mkt-currency-toggle">
+    <button data-currency="usd">$</button>
+    <button data-currency="syp">ل.س</button>
+</div>
+
+<script src="data.js"></script>
+<script>
+var params = new URLSearchParams(window.location.search);
+var slug = params.get("slug") || MKT_BOOKS[0].slug;
+var book = MKT_BOOKS.find(function (b) { return b.slug === slug; }) || MKT_BOOKS[0];
+
+document.title = book.title + " — مكتبة آفاق";
+
+var waMessage = encodeURIComponent(
+    "مرحباً، أريد طلب كتاب:\n\"" + book.title + "\"\nالسعر: " +
+    mktFormatMoney(book.price_usd) + "$ (" + mktFormatMoney(book.price_syp) + " ل.س)"
+);
+
+document.getElementById("mkt-book-page").innerHTML =
+    '<div class="mkt-book-cover">لا صورة</div>' +
+    '<div>' +
+        '<h1>' + book.title + '</h1>' +
+        '<div class="mkt-book-meta">' +
+            '<span>المؤلف: ' + book.author + '</span>' +
+            '<span>التصنيف: ' + book.category + '</span>' +
+        '</div>' +
+        '<p class="mkt-book-price" style="font-size:1.3em">' +
+            '<span class="mkt-price-usd">' + mktFormatMoney(book.price_usd) + ' $</span>' +
+            '<span class="mkt-price-syp">' + mktFormatMoney(book.price_syp) + ' ل.س</span>' +
+        '</p>' +
+        '<a class="mkt-order-button" target="_blank" href="https://wa.me/963000000000?text=' + waMessage + '">اطلب عبر واتساب</a>' +
+        '<p>' + book.description + '</p>' +
+    '</div>';
+</script>
+
+</body>
+</html>
