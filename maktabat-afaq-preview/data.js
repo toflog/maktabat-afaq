@@ -87,5 +87,8 @@ const MKT_BOOKS = [
 })();
 
 function mktFormatMoney(n) {
-    return n.toLocaleString("ar", { minimumFractionDigits: n % 1 === 0 ? 0 : 2 });
+    // نستخدم en-US عمداً بدل ar لضمان أرقام غربية (3.60) بدل الأرقام
+    // الهندية الشرقية (٣٫٦٠) التي يفرضها لوكال "ar" في متصفحات كروم —
+    // نفس القاعدة المتبعة في أغلب متاجر الكتب العربية التجارية (جرير، نون).
+    return n.toLocaleString("en-US", { minimumFractionDigits: n % 1 === 0 ? 0 : 2 });
 }
