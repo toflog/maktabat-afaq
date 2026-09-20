@@ -11,7 +11,7 @@
 <body>
 
 <div class="mkt-preview-banner">
-    نسخة معاينة تصميمية — بيانات وهمية، غير متصلة بالموقع الحقيقي
+    نسخة معاينة تصميمية — كتالوج حقيقي (40 كتاباً)، صور الأغلفة قيد الاكتمال تدريجياً
 </div>
 
 <header class="mkt-header">
@@ -48,31 +48,30 @@
 
 <footer class="mkt-footer">© 2026 مكتبة آفاق</footer>
 
-<div id="mkt-currency-toggle">
-    <button data-currency="usd">$</button>
-    <button data-currency="syp">ل.س</button>
-</div>
-
 <script src="data.js"></script>
 <script>
+function mktCoverHTML(book) {
+    if (book.cover) {
+        return '<img class="mkt-book-cover" src="covers/' + book.cover + '" alt="' + book.title + '" loading="lazy">';
+    }
+    return '<div class="mkt-book-cover mkt-book-cover--empty">لا صورة</div>';
+}
+
 function mktBookCardHTML(book) {
     return (
         '<a class="mkt-book-card" href="book.html?slug=' + book.slug + '">' +
-            '<div class="mkt-book-cover">لا صورة</div>' +
+            mktCoverHTML(book) +
             '<div class="mkt-book-info">' +
                 '<span class="mkt-book-title">' + book.title + '</span>' +
-                '<span class="mkt-book-price">' +
-                    '<span class="mkt-price-usd">' + mktFormatMoney(book.price_usd) + ' $</span>' +
-                    '<span class="mkt-price-syp">' + mktFormatMoney(book.price_syp) + ' ل.س</span>' +
-                '</span>' +
+                '<span class="mkt-book-publisher">' + book.publisher + '</span>' +
+                '<span class="mkt-book-price">' + mktPriceHTML(book) + '</span>' +
             '</div>' +
         '</a>'
     );
 }
 
 document.getElementById("mkt-bestsellers").innerHTML =
-    MKT_BOOKS.filter(function (b) { return b.badge === "الأكثر طلباً"; }).map(mktBookCardHTML).join("") ||
-    MKT_BOOKS.slice(0, 2).map(mktBookCardHTML).join("");
+    MKT_BOOKS.filter(function (b) { return b.badge === "الأكثر طلباً"; }).map(mktBookCardHTML).join("");
 
 document.getElementById("mkt-new-arrivals").innerHTML =
     MKT_BOOKS.map(mktBookCardHTML).join("");

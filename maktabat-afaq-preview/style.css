@@ -147,9 +147,14 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .mkt-book-card:hover { box-shadow: var(--mkt-shadow); transform: translateY(-2px); }
 
 .mkt-book-cover {
+    display: block;
     width: 100%;
     aspect-ratio: 2 / 3;
+    object-fit: cover;
     background: var(--mkt-color-border);
+}
+
+.mkt-book-cover--empty {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -163,10 +168,26 @@ a:focus-visible, button:focus-visible, input:focus-visible {
     display: block;
     font-size: 0.9em;
     color: var(--mkt-color-text);
+    margin-bottom: 2px;
+}
+
+.mkt-book-publisher {
+    display: block;
+    font-size: 0.75em;
+    color: var(--mkt-color-muted);
     margin-bottom: 4px;
 }
 
 .mkt-book-price { font-weight: bold; color: var(--mkt-color-primary); }
+
+.mkt-price-soon {
+    font-weight: normal;
+    font-style: italic;
+    color: var(--mkt-color-muted);
+    font-size: 0.9em;
+}
+
+.mkt-price-value { color: var(--mkt-color-primary); }
 
 /* ===== زر الطلب عبر واتساب ===== */
 
@@ -203,37 +224,9 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .mkt-book-meta { color: var(--mkt-color-muted); margin: 12px 0; }
 .mkt-book-meta span { display: inline-block; margin-left: 12px; }
 
-/* ===== تبديل العملة ===== */
-
-#mkt-currency-toggle {
-    position: fixed;
-    bottom: 16px;
-    left: 16px;
-    z-index: 999;
-    background: #fff;
-    border: 1px solid var(--mkt-color-border);
-    border-radius: 20px;
-    box-shadow: var(--mkt-shadow);
-    padding: 4px;
-}
-
-#mkt-currency-toggle button {
-    border: none;
-    background: transparent;
-    color: var(--mkt-color-text);
-    padding: 6px 14px;
-    border-radius: 16px;
-    cursor: pointer;
-    font-size: 0.85em;
-    font-family: inherit;
-}
-
-#mkt-currency-toggle button.active {
-    background: var(--mkt-color-primary);
-    color: #fff;
-}
-
-.mkt-price-syp { display: none; }
+/* تبديل العملة (dollar/syp) اتشال مؤقتاً من هنا — مافيهوش معنى
+   طالما أغلب الأسعار "قريباً". هيرجع لما تتوفر أسعار رسمية حقيقية
+   لعدد كافٍ من الكتب. الأسلوب القديم متاح في تاريخ git لو احتجناه. */
 
 /* ===== تذييل ===== */
 
