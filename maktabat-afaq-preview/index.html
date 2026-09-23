@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>مكتبة آفاق</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="mkt-preview-banner">
+    نسخة معاينة تصميمية — كتالوج حقيقي (40 كتاباً)، صور الأغلفة قيد الاكتمال تدريجياً
+</div>
+
+<header class="mkt-header">
+    <a href="index.html" class="mkt-logo">مكتبة آفاق</a>
+</header>
+
+<section class="mkt-hero">
+    <h1>مكتبة آفاق</h1>
+    <p>اكتشف كتابك القادم</p>
+</section>
+
+<h2 class="mkt-section-title">🔥 الأكثر طلباً</h2>
+<div class="mkt-book-grid" id="mkt-bestsellers"></div>
+
+<h2 class="mkt-section-title">🆕 وصل حديثاً</h2>
+<div class="mkt-book-grid" id="mkt-new-arrivals"></div>
+
+<h2 class="mkt-section-title">📚 تصفح حسب التصنيف</h2>
+<ul class="mkt-category-list">
+    <li><a href="#">تراث</a></li>
+    <li><a href="#">أدب مترجم</a></li>
+    <li><a href="#">تنمية بشرية وعلم نفس</a></li>
+    <li><a href="#">فنون وأدب</a></li>
+</ul>
+
+<h2 class="mkt-section-title">لماذا مكتبة آفاق؟</h2>
+<div class="mkt-why-us">
+    <span>✓ كتب أصلية</span>
+    <span>✓ تشكيلة متنوعة</span>
+    <span>✓ طلب سهل عبر واتساب</span>
+    <span>✓ رد سريع</span>
+    <span>✓ توصيل داخل سوريا</span>
+</div>
+
+<footer class="mkt-footer">© 2026 مكتبة آفاق</footer>
+
+<script src="data.js"></script>
+<script>
+function mktCoverHTML(book) {
+    if (book.cover) {
+        return '<img class="mkt-book-cover" src="covers/' + book.cover + '" alt="' + book.title + '" loading="lazy">';
+    }
+    return '<div class="mkt-book-cover mkt-book-cover--empty">لا صورة</div>';
+}
+
+function mktBookCardHTML(book) {
+    return (
+        '<a class="mkt-book-card" href="book.html?slug=' + book.slug + '">' +
+            mktCoverHTML(book) +
+            '<div class="mkt-book-info">' +
+                '<span class="mkt-book-title">' + book.title + '</span>' +
+                '<span class="mkt-book-publisher">' + book.publisher + '</span>' +
+                '<span class="mkt-book-price">' + mktPriceHTML(book) + '</span>' +
+            '</div>' +
+        '</a>'
+    );
+}
+
+document.getElementById("mkt-bestsellers").innerHTML =
+    MKT_BOOKS.filter(function (b) { return b.badge === "الأكثر طلباً"; }).map(mktBookCardHTML).join("");
+
+document.getElementById("mkt-new-arrivals").innerHTML =
+    MKT_BOOKS.map(mktBookCardHTML).join("");
+</script>
+
+</body>
+</html>

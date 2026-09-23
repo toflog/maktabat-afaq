@@ -1,0 +1,137 @@
+baseline:
+  name: maktaba-project-baseline
+  version: "1.5"
+  project: "مكتبة الكتب الورقية — سوق سوري"
+  source_plan: "مخطط_مشروع_مكتبة_الكتب.md (V1.1)"
+  status: IN_IMPLEMENTATION
+
+stack:
+  cms: WordPress
+  ecommerce_core: WooCommerce
+  theme_type: child-theme (free base theme)
+  custom_plugin: maktaba-core
+  payment_gateway: none (V1)
+  languages: [ar]
+  text_direction: rtl
+
+scope:
+  in_v1:
+    - كتالوج الكتب (بحث، تصنيفات، مؤلفون، دور نشر)
+    - نظام طلبات عبر WhatsApp/Messenger (بدون Checkout إلكتروني)
+    - إدارة مخزون بسجل حركات (Inventory Movement Ledger)
+    - إدارة موردين ومشتريات
+    - إدارة عملاء (بدون تسجيل إجباري)
+    - تقارير مبيعات/مخزون/أرباح داخلية
+    - محتوى سوشيال قابل لإعادة الاستخدام لكل كتاب
+    - SEO أساسي + أمان ونسخ احتياطي أساسيين
+  out_of_v1:
+    - بوابة دفع إلكتروني
+    - حسابات عملاء إجبارية
+    - تطبيقات موبايل
+    - AI / Microservices / Redis / Kubernetes
+    - شحن دولي
+
+directories:
+  repository: "شجرة المشروع الكاملة (WordPress + Theme + Custom Plugin)"
+  contracts: "العقود الملزمة بين الطبقات (data / domain / integration / api)"
+  architecture: "قواعد الاعتماد والطبقات والحدود"
+  variables: "تسميات موحدة، متغيرات بيئة، معرّفات مشتركة"
+  ownership: "توزيع الملكية على الأدوار (Backend/Plugin, Frontend/Theme, Content/Social)"
+  constraints: "القيود الممنوعة تقنياً/معمارياً/أمنياً"
+  interfaces: "نقاط التكامل بين الوحدات"
+  tests: "اختبارات العقود المطلوبة قبل الدمج"
+
+change_control:
+  rule: >
+    أي تعديل يمس contracts/ أو architecture/ يعتبر "تغييراً معمارياً"
+    ويتطلب تحديث هذا الملف (BASELINE_MANIFEST.yaml) ورفع رقم الإصدار،
+    قبل أن يبدأ أي تنفيذ بناءً عليه.
+  baseline_vs_actual: >
+    يُقارن لاحقاً Repository الفعلي بهذا الـ Baseline (Expected vs Observed)
+    لاكتشاف أي انحراف معماري عن الخطة المعتمدة.
+  history:
+    - version: "1.5"
+      change: >
+        آلية استيراد جماعي جديدة: "حزمة ناشر" (Publisher Pack) — ملف
+        zip واحد يحتوي manifest.json يصف عدة كتب + مجلد covers/
+        بصورها. أُضيف Admin/Import/PublisherPackImporter.php (يفك
+        الضغط، يتحقق من الحقول الإلزامية لكل كتاب على حدة بدل إيقاف
+        الاستيراد بالكامل لخطأ في كتاب واحد، ينشئ المنتج وكل حقوله
+        المخصَّصة، يرفع صورة الغلاف كصورة بارزة فعلية عبر
+        wp_insert_attachment، يحسب السعر بالعملتين تلقائياً عبر
+        PriceRecalculator إن وُجد سعر رسمي، ويمنع تكرار أي كتاب له
+        ISBN مطابق لكتاب مستورَد مسبقاً بتحديثه بدل تكراره). سكربت
+        WP-CLI جديد: docker/wp-cli-scripts/import-publisher-pack.sh.
+        دليل جديد كامل: docs/publisher-pack-guide.md — يوسّع
+        book_acquisition_methodology.md ليغطي قواعد جمع الصور
+        (الأولوية للتصوير الذاتي للنسخ الورقية المملوكة فعلياً)
+        ومواصفة تنسيق الحزمة بالتفصيل. لا تعديل على أي عقد بيانات أو
+        قاعدة مجال قائمة — إضافة طبقة Admin/ خالصة فوق ما هو موجود.
+    - version: "1.4"
+      change: >
+        ميزة تسعير جديدة كاملة بناءً على طلب صريح: كل كتاب يُسعَّر الآن
+        كـ (السعر الرسمي على nahdetmisr.com بالجنيه المصري ÷ سعر
+        الجنيه/دولار) × 1.20، معروضاً للزائر بالدولار والليرة السورية
+        معاً مع زر تبديل عملة (Frontend/Pricing/CurrencyToggle).
+        أُضيف: Domain/Pricing/CurrencyConverter (رياضيات صرفة، بلا
+        اعتماد على GeneralSettings التزاماً بقاعدة الطبقات)،
+        Admin/Pricing/PriceRecalculator (نقطة التجميع الوحيدة التي تقرأ
+        سعري الصرف من الإعدادات وتحسب/تخزّن)،
+        Integrations/WooCommerce/PriceDisplayBridge (الجسر الوحيد
+        المسموح له بلمس خطاف woocommerce_get_price_html). حقلان جديدان
+        في GeneralSettings (egp_per_usd_rate, syp_per_usd_rate) —
+        يدويان عمداً، بلا جلب آلي من الإنترنت (القرار وتبريره كاملاً في
+        contracts/domain_contracts/multi_currency_pricing.md). كما
+        أُضيف عقد حوكمة جديد بالكامل:
+        contracts/domain_contracts/book_acquisition_methodology.md —
+        منهجية موحّدة لمصادر البحث، الحقول الإلزامية مقابل الاختيارية،
+        قواعد كتابة الوصف، وآليات الجذب التسويقية المطبَّقة فعلياً في
+        الكود — ليُتَّبع في إضافة أي كتاب طوال حياة المشروع.
+        سكربتات WP-CLI (add-book-template.sh, add-books-bulk.sh) عُدِّلت
+        لتستخدم official_price_egp بدل سعر يدوي مباشر، وأُضيف سكربت
+        جديد recalculate-prices.sh لإعادة حساب كل الأسعار دفعة واحدة
+        بعد أي تعديل على سعر الصرف.
+    - version: "1.3"
+      change: >
+        سدّ آخر بند تحسين UX متبقٍ من "تقرير حالة المشروع": استبدال حقل
+        "معرّف الكتاب" الرقمي اليدوي في Admin/Purchase/PurchaseAdminPage.php
+        ببحث حيّ (Live Search) بالعنوان أو ISBN، بلا أي مكتبة JS خارجية
+        (Vanilla JS + fetch — التزاماً بمبدأ Zero-Cost/Zero-Complexity).
+        أُضيفت نقطة AJAX خامسة `mkt_search_books` في
+        Admin/Ajax/AjaxHandlers.php (قراءة فقط، محمية بنفس nonce
+        + current_user_can الموجودين)، ووُثّقت في
+        contracts/api_contracts/admin_ajax_endpoints.md وفق قاعدة
+        change_control نفسها. لا تغيير على أي عقد بيانات أو قاعدة مجال.
+        المتبقي الوحيد الآن من تقرير الحالة: اختبارات PHPUnit فعلية على
+        بيئة WordPress حقيقية (خارج نطاق ما يمكن تنفيذه في هذه البيئة).
+    - version: "1.1"
+      change: >
+        تعديل قرار قوالب الـ Theme: إلغاء استنساخ single-product.php
+        وarchive-product.php الكاملين، والاعتماد بدلاً منهما على
+        WooCommerce hooks (woocommerce_single_product_summary,
+        woocommerce_after_single_product_summary) لربط
+        [mkt_order_button] و[mkt_similar_books]، وعلى ودجت WooCommerce
+        الجاهزة للفلاتر. التفاصيل الكاملة في repository/TREE.md
+        (قسم "تحديث معماري"). تمت إضافة طبقات Admin/Ajax، Admin/Menu،
+        Admin/MetaBoxes، Admin/Purchase، وIntegrations/PostTypes،
+        Integrations/Taxonomies، Integrations/Installer.
+    - version: "1.2"
+      change: >
+        سدّ الفجوات الخمس الحرجة/المتوسطة من "تقرير حالة المشروع":
+        (1) Admin/MetaBoxes/BookDetailsMetaBox.php — واجهة إدخال كاملة
+        لحقول الكتاب (ISBN، لغة، صفحات، سنة نشر، حالة، سعر شراء،
+        تكلفة شحن). (2) Admin/Settings/SettingsAdminPage.php — شاشة
+        إعدادات فعلية (رقم واتساب، حد الشحن المجاني، هاشتاغات) بدل
+        الاعتماد على تعديل wp_options برمجياً. (3) إضافة
+        Domain/Customer/CustomerSourceRepository.php + جدول
+        mkt_customers (migration 003) — يُغذّى تلقائياً من
+        OrderMetaBridge::setSource(). (4) إضافة نقطة AJAX رابعة
+        mkt_set_order_source + حقل اختيار المصدر في
+        OrderStatusMetaBox — وثّقت في contracts/api_contracts/
+        admin_ajax_endpoints.md. (5) إضافة flush_rewrite_rules() في
+        Installer::activate() مع تسجيل مسبق لـ PostTypes/Taxonomies
+        عند التفعيل مباشرة (تفادي روابط 404 لصفحات المورد/الشراء/
+        المؤلف/الناشر بعد أول تفعيل).
+        المتبقي من تقرير الحالة (غير مُنفَّذ بعد): تحسين واجهة اختيار
+        الكتاب في PurchaseAdminPage (بحث بدل إدخال رقمي)، واختبارات
+        PHPUnit فعلية على بيئة WordPress حقيقية.
