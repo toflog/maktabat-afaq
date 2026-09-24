@@ -22,9 +22,22 @@ rihla-ila-albuldan-alishtirakiyya.png  qisas-qasira.png
 fadihat-alqarn.png                   thamaniyat-abnaa-umooma.jpg
 jur-mihrathak.jpg                    wassi-madak.jpg
 ```
-باقي 16 كتاباً (العبيكان، جرير، أثر، جامعة الملك سعود) لسه بلا صور
-حقيقية — أسماء ملفاتهم لسه غير محدَّدة نهائياً، هتتحدد وقت توفر
-الصورة الفعلية.
+**11 كتاباً إضافية اتصورت وتم تحديد أسمائهم (2026-09-24)، المصدر:
+مواقع الناشرين الرسمية مباشرة:**
+```
+دار العبيكان (6):
+la-tahzan.webp                       ashaar-khaled-alfaisal.jpg
+fi-qalb-aljihad.jpg                  indama-tusbih-alhaqiqa-khiyana.jpg
+hillary-clinton-kursi-aletiraf.jpg   al-rawd-al-murabbi.jpg
+
+دار أثر (1):
+al-buasaa.png
+
+جامعة الملك سعود (4):
+usr-alhisab.jpg              alsuluk-altanzimi.jpg
+taamiq-alfahm-almuhasaba.jpg   alfashal-almutakarrir.jpg
+```
+**الباقي: 5 كتب من مكتبة جرير فقط** لسه بلا صور حقيقية.
 
 ## 2. حزم الاستيراد الحقيقي في ووردبريس
 ```

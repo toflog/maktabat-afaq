@@ -11,7 +11,7 @@
       "publication_year": 0,
       "official_price_egp": 0,
       "description": "مرجع علمي مترجم موجَّه لأولياء الأمور والمختصين في علم النفس السريري والتربوي، يتناول تشخيص وإدارة صعوبة عسر الحساب لدى الأطفال ذوي الاحتياجات التعليمية الخاصة.",
-      "cover_image": ""
+      "cover_image": "covers/usr-alhisab.jpg"
     },
     {
       "title": "السلوك التنظيمي في المؤسسات الصحية وسلامة المريض",
@@ -23,7 +23,7 @@
       "publication_year": 0,
       "official_price_egp": 0,
       "description": "تحليل شامل لنظريات السلوك التنظيمي الحديثة والقديمة داخل المؤسسات الصحية، مع استراتيجيات عملية لتحفيز الموظفين وتحسين جودة الخدمة وسلامة المرضى.",
-      "cover_image": ""
+      "cover_image": "covers/alsuluk-altanzimi.jpg"
     },
     {
       "title": "تعميق الفهم في الإطار المفاهيمي (الفكري/النظري) للمحاسبة المالية",
@@ -35,7 +35,7 @@
       "publication_year": 0,
       "official_price_egp": 0,
       "description": "دراسة أكاديمية تتناول الأسس النظرية والمفاهيمية لعلم المحاسبة المالية، موجَّهة للباحثين والدارسين في هذا المجال.",
-      "cover_image": ""
+      "cover_image": "covers/taamiq-alfahm-almuhasaba.jpg"
     },
     {
       "title": "الفشل المتكرر لانغراس الأجنة في محاولات أطفال الأنابيب",
@@ -47,7 +47,7 @@
       "publication_year": 0,
       "official_price_egp": 0,
       "description": "مرجع طبي متخصص يتناول أسباب وعلاج حالات الفشل المتكرر لانغراس الأجنة في محاولات الإخصاب الصناعي (أطفال الأنابيب).",
-      "cover_image": ""
+      "cover_image": "covers/alfashal-almutakarrir.jpg"
     }
   ]
 }

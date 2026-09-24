@@ -11,7 +11,7 @@
       "publication_year": 2003,
       "official_price_egp": 0,
       "description": "من أكثر كتب التنمية البشرية والفكر الإسلامي انتشاراً في العالم العربي، يجمع بين الاستشهاد بالقرآن والسنة وقصص من التراث والتجارب الإنسانية، في محاولة لمعالجة الهموم اليومية ومشاعر الحزن بأسلوب مبسّط ومباشر.",
-      "cover_image": ""
+      "cover_image": "covers/la-tahzan.webp"
     },
     {
       "title": "أشعار خالد الفيصل",
@@ -23,7 +23,7 @@
       "publication_year": 0,
       "official_price_egp": 0,
       "description": "مجموعة شعرية للأمير الشاعر خالد الفيصل، أحد أبرز الأصوات الشعرية السعودية المعاصرة.",
-      "cover_image": ""
+      "cover_image": "covers/ashaar-khaled-alfaisal.jpg"
     },
     {
       "title": "في قلب الجهاد",
@@ -35,7 +35,7 @@
       "publication_year": 0,
       "official_price_egp": 0,
       "description": "كتاب مترجم يتناول تجربة تسلل شخصي إلى صفوف تنظيم القاعدة، ضمن أدب المذكرات السياسية والأمنية المترجمة. البيانات مأخوذة من كتالوج بيع تابع لطرف ثالث ولم يتم تأكيدها من موقع الناشر مباشرة.",
-      "cover_image": ""
+      "cover_image": "covers/fi-qalb-aljihad.jpg"
     },
     {
       "title": "عندما تصبح الحقيقة خيانة",
@@ -47,7 +47,7 @@
       "publication_year": 0,
       "official_price_egp": 0,
       "description": "كتاب مترجم يتناول ملابسات أحداث الحادي عشر من سبتمبر وغزو العراق من زاوية نقدية. البيانات مأخوذة من كتالوج بيع تابع لطرف ثالث ولم يتم تأكيدها من موقع الناشر مباشرة.",
-      "cover_image": ""
+      "cover_image": "covers/indama-tusbih-alhaqiqa-khiyana.jpg"
     },
     {
       "title": "هيلاري كلينتون على كرسي الاعتراف",
@@ -59,7 +59,7 @@
       "publication_year": 0,
       "official_price_egp": 0,
       "description": "كتاب مترجم في إطار المذكرات والسير السياسية. البيانات مأخوذة من كتالوج بيع تابع لطرف ثالث ولم يتم تأكيدها من موقع الناشر مباشرة.",
-      "cover_image": ""
+      "cover_image": "covers/hillary-clinton-kursi-aletiraf.jpg"
     },
     {
       "title": "الروض المربع بشرح زاد المستقنع",
@@ -71,7 +71,7 @@
       "publication_year": 0,
       "official_price_egp": 0,
       "description": "شرح فقهي كلاسيكي على مذهب الإمام أحمد بن حنبل، من المراجع المعتمدة في تدريس الفقه الحنبلي، وله عدة طبعات عند ناشرين متعددين من بينهم العبيكان.",
-      "cover_image": ""
+      "cover_image": "covers/al-rawd-al-murabbi.jpg"
     }
   ]
 }

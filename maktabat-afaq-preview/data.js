@@ -9,12 +9,12 @@
 
 const MKT_BOOKS = [
     // ===== دار العبيكان للنشر =====
-    { slug: "la-tahzan", title: "لا تحزن", author: "عائض القرني", category: "تنمية بشرية وفكر إسلامي", publisher: "دار العبيكان للنشر", cover: "", badge: "الأكثر طلباً" },
-    { slug: "ashaar-khaled-alfaisal", title: "أشعار خالد الفيصل", author: "خالد الفيصل", category: "شعر", publisher: "دار العبيكان للنشر", cover: "", badge: null },
-    { slug: "fi-qalb-aljihad", title: "في قلب الجهاد", author: "", category: "سيرة ذاتية وسياسة", publisher: "دار العبيكان للنشر", cover: "", badge: null },
-    { slug: "indama-tusbih-alhaqiqa-khiyana", title: "عندما تصبح الحقيقة خيانة", author: "", category: "سياسة وتاريخ", publisher: "دار العبيكان للنشر", cover: "", badge: null },
-    { slug: "hillary-clinton-kursi-aletiraf", title: "هيلاري كلينتون على كرسي الاعتراف", author: "", category: "سيرة ذاتية وسياسة", publisher: "دار العبيكان للنشر", cover: "", badge: null },
-    { slug: "al-rawd-al-murabbi", title: "الروض المربع بشرح زاد المستقنع", author: "منصور بن يونس البهوتي", category: "فقه إسلامي", publisher: "دار العبيكان للنشر", cover: "", badge: null },
+    { slug: "la-tahzan", title: "لا تحزن", author: "عائض القرني", category: "تنمية بشرية وفكر إسلامي", publisher: "دار العبيكان للنشر", cover: "la-tahzan.webp", badge: "الأكثر طلباً" },
+    { slug: "ashaar-khaled-alfaisal", title: "أشعار خالد الفيصل", author: "خالد الفيصل", category: "شعر", publisher: "دار العبيكان للنشر", cover: "ashaar-khaled-alfaisal.jpg", badge: null },
+    { slug: "fi-qalb-aljihad", title: "في قلب الجهاد", author: "", category: "سيرة ذاتية وسياسة", publisher: "دار العبيكان للنشر", cover: "fi-qalb-aljihad.jpg", badge: null },
+    { slug: "indama-tusbih-alhaqiqa-khiyana", title: "عندما تصبح الحقيقة خيانة", author: "", category: "سياسة وتاريخ", publisher: "دار العبيكان للنشر", cover: "indama-tusbih-alhaqiqa-khiyana.jpg", badge: null },
+    { slug: "hillary-clinton-kursi-aletiraf", title: "هيلاري كلينتون على كرسي الاعتراف", author: "", category: "سيرة ذاتية وسياسة", publisher: "دار العبيكان للنشر", cover: "hillary-clinton-kursi-aletiraf.jpg", badge: null },
+    { slug: "al-rawd-al-murabbi", title: "الروض المربع بشرح زاد المستقنع", author: "منصور بن يونس البهوتي", category: "فقه إسلامي", publisher: "دار العبيكان للنشر", cover: "al-rawd-al-murabbi.jpg", badge: null },
 
     // ===== مكتبة جرير =====
     { slug: "al-rahib-alathi-baa-sayaratah-alferrari", title: "الراهب الذي باع سيارته الفيراري", author: "روبن شارما", category: "تنمية بشرية", publisher: "مكتبة جرير", cover: "", badge: null },
@@ -24,13 +24,13 @@ const MKT_BOOKS = [
     { slug: "iktashif-alqaed-alathi-bidakhilik", title: "اكتشف القائد الذي بداخلك: فن القيادة في العمل", author: "", category: "إدارة وقيادة", publisher: "مكتبة جرير", cover: "", badge: null },
 
     // ===== دار أثر للنشر والتوزيع =====
-    { slug: "al-buasaa", title: "البؤساء (4 مجلدات)", author: "فيكتور هوجو", category: "روايات مترجمة", publisher: "دار أثر للنشر والتوزيع", cover: "", badge: "الأكثر طلباً" },
+    { slug: "al-buasaa", title: "البؤساء (4 مجلدات)", author: "فيكتور هوجو", category: "روايات مترجمة", publisher: "دار أثر للنشر والتوزيع", cover: "al-buasaa.png", badge: "الأكثر طلباً" },
 
     // ===== دار جامعة الملك سعود للنشر =====
-    { slug: "usr-alhisab", title: "عسر الحساب: الدليل الإرشادي لأهم الأعراض", author: "دانييلا لوكانجيلي", category: "علم النفس التربوي", publisher: "دار جامعة الملك سعود للنشر", cover: "", badge: null },
-    { slug: "alsuluk-altanzimi", title: "السلوك التنظيمي في المؤسسات الصحية وسلامة المريض", author: "", category: "إدارة صحية", publisher: "دار جامعة الملك سعود للنشر", cover: "", badge: null },
-    { slug: "taamiq-alfahm-almuhasaba", title: "تعميق الفهم في الإطار المفاهيمي للمحاسبة المالية", author: "خالد بن رشيد العديم", category: "محاسبة", publisher: "دار جامعة الملك سعود للنشر", cover: "", badge: null },
-    { slug: "alfashal-almutakarrir", title: "الفشل المتكرر لانغراس الأجنة في محاولات أطفال الأنابيب", author: "", category: "طب", publisher: "دار جامعة الملك سعود للنشر", cover: "", badge: null },
+    { slug: "usr-alhisab", title: "عسر الحساب: الدليل الإرشادي لأهم الأعراض", author: "دانييلا لوكانجيلي", category: "علم النفس التربوي", publisher: "دار جامعة الملك سعود للنشر", cover: "usr-alhisab.jpg", badge: null },
+    { slug: "alsuluk-altanzimi", title: "السلوك التنظيمي في المؤسسات الصحية وسلامة المريض", author: "", category: "إدارة صحية", publisher: "دار جامعة الملك سعود للنشر", cover: "alsuluk-altanzimi.jpg", badge: null },
+    { slug: "taamiq-alfahm-almuhasaba", title: "تعميق الفهم في الإطار المفاهيمي للمحاسبة المالية", author: "خالد بن رشيد العديم", category: "محاسبة", publisher: "دار جامعة الملك سعود للنشر", cover: "taamiq-alfahm-almuhasaba.jpg", badge: null },
+    { slug: "alfashal-almutakarrir", title: "الفشل المتكرر لانغراس الأجنة في محاولات أطفال الأنابيب", author: "", category: "طب", publisher: "دار جامعة الملك سعود للنشر", cover: "alfashal-almutakarrir.jpg", badge: null },
 
     // ===== دار التنوير (24 كتاباً — صورها جاهزة فعلياً) =====
     { slug: "serial-aldeen-alfalsafa-suqrat", title: "صراع الدين والفلسفة في محاكمة سقراط", author: "", category: "فلسفة", publisher: "دار التنوير", cover: "serial-aldeen-alfalsafa-suqrat.jpg", badge: null },
